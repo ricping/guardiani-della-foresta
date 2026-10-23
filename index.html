@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guardiani della Foresta</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel intro">
+        <p class="eyebrow">Gioco Browser</p>
+        <h1>Guardiani della Foresta</h1>
+        <p class="lede">
+          Attraversa la foresta, raduna gli animali dispersi e guidali nel
+          rifugio prima che i cacciatori ne uccidano dieci.
+        </p>
+        <div class="controls">
+          <p><strong>Muoviti:</strong> WASD o frecce</p>
+          <p><strong>Scatto:</strong> Shift</p>
+          <p><strong>Salvataggio:</strong> avvicinati agli animali</p>
+          <p><strong>Ricomincia:</strong> R</p>
+        </div>
+        <div class="level-picker" aria-label="Selezione livello">
+          <button class="level-button is-active" type="button" data-level="easy">Facile</button>
+          <button class="level-button" type="button" data-level="medium">Medio</button>
+          <button class="level-button" type="button" data-level="hard">Difficile</button>
+        </div>
+        <button id="start-button" type="button">Inizia missione</button>
+      </section>
+
+      <section class="panel game-panel">
+        <div class="hud">
+          <div><span>Animali salvati</span><strong id="saved-count">0 / 18</strong></div>
+          <div><span>Animali uccisi</span><strong id="lost-count">0 / 10</strong></div>
+          <div><span>Tempo</span><strong id="timer">90</strong></div>
+          <div><span>Stato</span><strong id="status-text">In attesa</strong></div>
+        </div>
+        <canvas id="game" width="960" height="600" aria-label="Campo di gioco"></canvas>
+        <div class="legend">
+          <span><i class="swatch ranger"></i> Guardiano</span>
+          <span><i class="swatch animal"></i> Animali da guidare</span>
+          <span><i class="swatch hunter"></i> Cacciatore</span>
+          <span><i class="swatch safe"></i> Rifugio</span>
+        </div>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+:root {
+  color-scheme: light;
+  --bg: #d9e2d3;
+  --panel: rgba(245, 241, 232, 0.84);
+  --text: #1f2c21;
+  --accent: #8e5836;
+  --accent-dark: #5f3821;
+  --forest: #415b45;
+  --forest-deep: #26362a;
+  --field: #93a97f;
+  --safe: #d0bb7a;
+  --danger: #6f3c31;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(255, 248, 226, 0.5), transparent 28%),
+    linear-gradient(180deg, #a8b899 0%, #6f8867 38%, #324536 100%);
+}
+
+.layout {
+  width: min(1200px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 24px 0 32px;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(31, 44, 33, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 18px 54px rgba(19, 31, 20, 0.26);
+}
+
+.intro {
+  padding: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #77563f;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 0.96;
+  font-weight: 700;
+}
+
+.lede,
+.controls p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.controls {
+  margin: 22px 0;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: rgba(255, 252, 246, 0.58);
+}
+
+.controls p {
+  margin: 8px 0;
+}
+
+.level-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 12px;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f9f4e8;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button.level-button {
+  padding: 12px 14px;
+  background: rgba(255, 252, 246, 0.78);
+  color: var(--accent-dark);
+  border: 1px solid rgba(31, 44, 33, 0.16);
+  box-shadow: none;
+}
+
+button.level-button.is-active {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: #f9f4e8;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(95, 56, 33, 0.28);
+}
+
+button.level-button:hover {
+  box-shadow: 0 8px 18px rgba(95, 56, 33, 0.14);
+}
+
+.game-panel {
+  padding: 16px;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.hud div {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 251, 244, 0.74);
+}
+
+.hud span,
+.legend span {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hud strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.2rem;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #96a982 0%, #748b62 100%);
+  border: 1px solid rgba(25, 48, 29, 0.28);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.ranger { background: #3f5f63; }
+.animal { background: #e9dec5; border: 1px solid rgba(0, 0, 0, 0.12); }
+.hunter { background: #6f3c31; }
+.safe { background: var(--safe); }
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    background:
+      radial-gradient(circle at top, rgba(255, 248, 226, 0.55), transparent 20%),
+      linear-gradient(180deg, #a8b899 0%, #6f8867 38%, #324536 100%);
+  }
+
+  .layout {
+    width: min(100vw - 18px, 1200px);
+    padding-top: 10px;
+    gap: 14px;
+  }
+
+  .intro,
+  .game-panel {
+    padding: 18px;
+  }
+
+  .hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .level-picker {
+    grid-template-columns: 1fr;
+  }
+}
